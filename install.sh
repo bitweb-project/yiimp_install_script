@@ -1,7 +1,7 @@
 #!/bin/bash
 ################################################################################
 # Original Author:   Kudaraidee
-# Modified by : Delari (https://github.com/xavatar/yiimp_install_scrypt)
+# Modified by : nando (https://github.com/NowputFinance/yiimp_install_script.git)
 
 # Program:
 #   Install yiimp on Ubuntu 18.04/20.04 running Nginx, MariaDB, and php7.4
@@ -162,7 +162,7 @@
     fi
     sudo apt -y update
 
-    sudo apt -y install php7.4-fpm php7.4-opcache php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli \
+    sudo apt -y install php7.4 php7.4-fpm php7.4-opcache php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli \
     php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt\
     ipp php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl memcached php7.4-memcache php7.4-memcached php-imagick php-gettext php7.4-zip php7.4-mbstring \
     libpsl-dev libnghttp2-dev
@@ -198,7 +198,8 @@
 
     sudo apt -y install software-properties-common build-essential
     sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake libboost-all-dev zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
-    sudo apt -y install libminiupnpc10 libzmq5
+    sudo apt -y install libssh-dev libbrotli-dev
+    sudo apt -y install libminiupnpc17 libzmq5
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -895,31 +896,31 @@
     cd yiimp/sql
 
     # Import sql dump
-    sudo zcat 2020-11-10-yaamp.sql.gz | sudo mysql --defaults-group-suffix=host1
+    sudo zcat 2020-11-10-yaamp.sql.gz | sudo mysql --defaults-group-suffix=host1 yiimpfrontend
 
     # Oh the humanity!
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-04-24-market_history.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-04-27-settings.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-05-11-coins.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-05-15-benchmarks.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-05-23-bookmarks.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-06-01-notifications.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-06-04-bench_chips.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2016-11-23-coins.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-02-05-benchmarks.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-03-31-earnings_index.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2020-06-03-blocks.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-05-accounts_case_swaptime.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-06-payouts_coinid_memo.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-09-notifications.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-10-bookmarks.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2018-09-22-workers.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2017-11-segwit.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2018-01-stratums_ports.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2018-02-coins_getinfo.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2019-03-coins_thepool_life.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2022-10-14-shares_solo.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2022-10-29-blocks_effort.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-04-24-market_history.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-04-27-settings.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-05-11-coins.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-05-15-benchmarks.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-05-23-bookmarks.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-06-01-notifications.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-06-04-bench_chips.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2016-11-23-coins.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-02-05-benchmarks.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-03-31-earnings_index.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2020-06-03-blocks.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-05-accounts_case_swaptime.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-06-payouts_coinid_memo.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-09-notifications.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-10-bookmarks.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2018-09-22-workers.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2017-11-segwit.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2018-01-stratums_ports.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2018-02-coins_getinfo.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2019-03-coins_thepool_life.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-14-shares_solo.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-29-blocks_effort.sql
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -1125,7 +1126,7 @@
     echo
     echo
     echo -e "$GREEN***************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v0.2 $COL_RESET"
+    echo -e "$GREEN Yiimp Install Script v0.4 $COL_RESET"
     echo -e "$GREEN Finish !!! $COL_RESET"
     echo -e "$GREEN***************************$COL_RESET"
     echo
