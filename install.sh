@@ -164,7 +164,7 @@
 
     sudo apt -y install php7.4 php7.4-fpm php7.4-opcache php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli \
     php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt\
-    ipp php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl memcached php7.4-memcache php7.4-memcached php-imagick php-gettext php7.4-zip php7.4-mbstring \
+    php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl memcached php7.4-memcache php7.4-memcached php-imagick php7.4-zip php7.4-mbstring \
     libpsl-dev libnghttp2-dev
     sleep 5
     sudo systemctl start php7.4-fpm
