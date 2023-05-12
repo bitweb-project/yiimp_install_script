@@ -4,7 +4,7 @@
 # Modified by : nando (https://github.com/NowputFinance/yiimp_install_script.git)
 
 # Program:
-#   Install yiimp on Ubuntu 18.04/20.04 running Nginx, MariaDB, and php7.4
+#   Install yiimp on Ubuntu 20.04 running Nginx, MariaDB, and php7.4
 #   v0.4 (update May, 2023)
 #
 ################################################################################
@@ -45,7 +45,7 @@
     echo
     echo -e "$GREEN************************************************************************$COL_RESET"
     echo -e "$GREEN Yiimp Install Script v0.4 $COL_RESET"
-    echo -e "$GREEN Install yiimp on Ubuntu 18.04/20.04 running Nginx, MariaDB, and php7.4 $COL_RESET"
+    echo -e "$GREEN Install yiimp on Ubuntu 20.04 running Nginx, MariaDB, and php7.4 $COL_RESET"
     echo -e "$GREEN************************************************************************$COL_RESET"
     echo
     sleep 3
@@ -921,6 +921,7 @@
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2019-03-coins_thepool_life.sql
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-14-shares_solo.sql
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-29-blocks_effort.sql
+    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2023-05-12-algo.sql
     echo -e "$GREEN Done...$COL_RESET"
 
 

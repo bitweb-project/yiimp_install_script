@@ -1,12 +1,12 @@
-# Yiimp_install_scrypt v0.3 (update May, 2022)
+# Yiimp_install_scrypt v0.4 (update May, 2023)
 
 Official Yiimp (used in this script for Yiimp Installation): https://github.com/tpruvot/yiimp
 
 ---
 
-## Install script for yiimp on Ubuntu Server 16.04 / 18.04 (use Tpruvot's Yiimp)
+## Install script for yiimp on Ubuntu Serve 20.04
 
-USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 16.04 / 18.04 !
+USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 20.04!
 
 Connect on your VPS =>
 
