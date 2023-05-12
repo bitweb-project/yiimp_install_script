@@ -5,7 +5,7 @@
 
 # Program:
 #   Install yiimp on Ubuntu 18.04/20.04 running Nginx, MariaDB, and php7.4
-#   v0.3 (update May, 2022)
+#   v0.4 (update May, 2023)
 #
 ################################################################################
 
@@ -44,7 +44,7 @@
     clear
     echo
     echo -e "$GREEN************************************************************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v0.3 $COL_RESET"
+    echo -e "$GREEN Yiimp Install Script v0.4 $COL_RESET"
     echo -e "$GREEN Install yiimp on Ubuntu 18.04/20.04 running Nginx, MariaDB, and php7.4 $COL_RESET"
     echo -e "$GREEN************************************************************************$COL_RESET"
     echo
@@ -90,16 +90,6 @@
     read -e -p "Install Fail2ban? [Y/n] : " install_fail2ban
     read -e -p "Install UFW and configure ports? [Y/n] : " UFW
     read -e -p "Install LetsEncrypt SSL? IMPORTANT! You MUST have your domain name pointed to this server prior to running the script!! [Y/n]: " ssl_install
-
-
-    # Switch Aptitude
-    #echo
-    #echo -e "$CYAN Switching to Aptitude $COL_RESET"
-    #echo
-    #sleep 3
-    #sudo apt -y install aptitude
-    #echo -e "$GREEN Done...$COL_RESET $COL_RESET"
-
 
     # Installing Nginx
     echo
@@ -174,7 +164,7 @@
 
     sudo apt -y install php7.4-fpm php7.4-opcache php7.4 php7.4-common php7.4-gd php7.4-mysql php7.4-imap php7.4-cli \
     php7.4-cgi php-pear imagemagick libruby php7.4-curl php7.4-intl php7.4-pspell mcrypt\
-    php7.4-recode php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl memcached php7.4-memcache php7.4-memcached php-imagick php-gettext php7.4-zip php7.4-mbstring \
+    ipp php7.4-sqlite3 php7.4-tidy php7.4-xmlrpc php7.4-xsl memcached php7.4-memcache php7.4-memcached php-imagick php-gettext php7.4-zip php7.4-mbstring \
     libpsl-dev libnghttp2-dev
     sleep 5
     sudo systemctl start php7.4-fpm
@@ -209,11 +199,6 @@
     sudo apt -y install software-properties-common build-essential
     sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils git cmake libboost-all-dev zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
     sudo apt -y install libminiupnpc10 libzmq5
-    sudo apt -y install libcanberra-gtk-module libqrencode-dev libzmq3-dev
-    sudo apt -y install libqt5gui5 libqt5core5a libqt5webkit5-dev libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
-    sudo add-apt-repository -y ppa:bitcoin/bitcoin
-    sudo apt -y update
-    sudo apt -y install libdb4.8-dev libdb4.8++-dev libdb5.3 libdb5.3++
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -269,61 +254,6 @@
     sudo ufw allow ssh
     sudo ufw allow http
     sudo ufw allow https
-    sudo ufw allow 3333/tcp
-    sudo ufw allow 3339/tcp
-    sudo ufw allow 3334/tcp
-    sudo ufw allow 3433/tcp
-    sudo ufw allow 3555/tcp
-    sudo ufw allow 3556/tcp
-    sudo ufw allow 3573/tcp
-    sudo ufw allow 3535/tcp
-    sudo ufw allow 3533/tcp
-    sudo ufw allow 3553/tcp
-    sudo ufw allow 3633/tcp
-    sudo ufw allow 3733/tcp
-    sudo ufw allow 3636/tcp
-    sudo ufw allow 3737/tcp
-    sudo ufw allow 3739/tcp
-    sudo ufw allow 3747/tcp
-    sudo ufw allow 3833/tcp
-    sudo ufw allow 3933/tcp
-    sudo ufw allow 4033/tcp
-    sudo ufw allow 4133/tcp
-    sudo ufw allow 4233/tcp
-    sudo ufw allow 4234/tcp
-    sudo ufw allow 4333/tcp
-    sudo ufw allow 4433/tcp
-    sudo ufw allow 4533/tcp
-    sudo ufw allow 4553/tcp
-    sudo ufw allow 4633/tcp
-    sudo ufw allow 4733/tcp
-    sudo ufw allow 4833/tcp
-    sudo ufw allow 4933/tcp
-    sudo ufw allow 5033/tcp
-    sudo ufw allow 5133/tcp
-    sudo ufw allow 5233/tcp
-    sudo ufw allow 5333/tcp
-    sudo ufw allow 5433/tcp
-    sudo ufw allow 5533/tcp
-    sudo ufw allow 5733/tcp
-    sudo ufw allow 5743/tcp
-    sudo ufw allow 3252/tcp
-    sudo ufw allow 5755/tcp
-    sudo ufw allow 5766/tcp
-    sudo ufw allow 5833/tcp
-    sudo ufw allow 5933/tcp
-    sudo ufw allow 6033/tcp
-    sudo ufw allow 5034/tcp
-    sudo ufw allow 6133/tcp
-    sudo ufw allow 6233/tcp
-    sudo ufw allow 6333/tcp
-    sudo ufw allow 6433/tcp
-    sudo ufw allow 7433/tcp
-    sudo ufw allow 7070/tcp
-    sudo ufw allow 8333/tcp
-    sudo ufw allow 8463/tcp
-    sudo ufw allow 8433/tcp
-    sudo ufw allow 8533/tcp
     sudo ufw --force enable
     sleep 5
     sudo systemctl status ufw | sed -n "1,3p"
@@ -366,7 +296,7 @@
 
     # Compil Blocknotify
     cd ~
-    git clone https://github.com/NowputFinance/yiimp_install_script.git
+    git clone https://github.com/NowputFinance/yiimp.git
     cd $HOME/yiimp/blocknotify
     sudo sed -i 's/tu8tu5/'$blckntifypass'/' blocknotify.cpp
     make -j$((`nproc`+1))
