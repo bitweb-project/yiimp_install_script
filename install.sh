@@ -1,7 +1,7 @@
 #!/bin/bash
 ################################################################################
 # Original Author:   Kudaraidee
-# Modified by : nando (https://github.com/NowputFinance/yiimp_install_script.git)
+# Modified by : nando (https://github.com/bitweb-project/yiimp_install_script.git)
 
 # Program:
 #   Install yiimp on Ubuntu 20.04 running Nginx, MariaDB, and php7.4
@@ -297,7 +297,7 @@
 
     # Compil Blocknotify
     cd ~
-    git clone https://github.com/NowputFinance/yiimp.git
+    git clone https://github.com/bitweb-project/yiimp.git
     cd $HOME/yiimp/blocknotify
     sudo sed -i 's/tu8tu5/'$blckntifypass'/' blocknotify.cpp
     make -j$((`nproc`+1))
