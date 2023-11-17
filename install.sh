@@ -1118,6 +1118,7 @@
     sudo systemctl status php7.4-fpm | sed -n "1,3p"
     sudo apt-get install php-curl
     sudo apt-get install php-memcache
+    sudo apt install php-mbstring
 
     echo
     echo -e "$GREEN Done...$COL_RESET"
