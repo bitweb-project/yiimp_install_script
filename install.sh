@@ -921,7 +921,6 @@
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2019-03-coins_thepool_life.sql
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-14-shares_solo.sql
     sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2022-10-29-blocks_effort.sql
-    sudo mysql --defaults-group-suffix=host1 --force yiimpfrontend < 2023-05-12-algo.sql
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -1117,7 +1116,8 @@
     sudo systemctl status nginx | sed -n "1,3p"
     sudo systemctl restart php7.4-fpm.service
     sudo systemctl status php7.4-fpm | sed -n "1,3p"
-
+    sudo apt-get install php-curl
+    sudo apt-get install php-memcache
 
     echo
     echo -e "$GREEN Done...$COL_RESET"
