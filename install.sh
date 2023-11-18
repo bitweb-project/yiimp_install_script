@@ -1109,9 +1109,6 @@
     sudo apt-mark hold openssl
 
     #Restart service
-    sudo apt -y install php-curl
-    sudo apt -y install php-memcache
-    sudo apt -y install php-mbstring
     sudo systemctl restart cron.service
     sudo systemctl restart mysql
     sudo systemctl status mysql | sed -n "1,3p"
